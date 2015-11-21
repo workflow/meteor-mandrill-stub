@@ -15,7 +15,7 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
 
   api.use('ecmascript');
-  api.use('wylio:mandrill');
+  api.use('wylio:mandrill@1.0.0');
 
   api.addFiles('server/mandrill-stub.js', 'server');
 });
