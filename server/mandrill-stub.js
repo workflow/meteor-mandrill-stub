@@ -19,4 +19,9 @@ Meteor.methods({
   'mandrillStub/getAPICalls': function() {
     return _mandrillStubAPICallsCollection.find().fetch();
   },
+  'mandrillStub/insert': function(doc) {
+    check(doc, Object);
+
+    _mandrillStubAPICallsCollection.insert(doc);
+  },
 });
