@@ -1,4 +1,4 @@
-let _mandrillStubAPICallsCollection = new Package.mongo.Mongo.Collection('mandrillStubAPICalls');
+MandrillStubAPICallsCollection = new Package.mongo.Mongo.Collection('mandrillStubAPICalls');
 
 Meteor.startup(() => {
   Mandrill.messages.__sendTemplate = Mandrill.messages.sendTemplate;
@@ -7,21 +7,21 @@ Meteor.startup(() => {
       Mandrill.messages.__sendTemplate(options);
     } else {
       // Log API calls to collection, where they can be verified
-      _mandrillStubAPICallsCollection.insert(options);
+      MandrillStubAPICallsCollection.insert(options);
     }
   };
 });
 
 Meteor.methods({
   'mandrillStub/reset': function() {
-    _mandrillStubAPICallsCollection.remove({});
+    MandrillStubAPICallsCollection.remove({});
   },
   'mandrillStub/getAPICalls': function() {
-    return _mandrillStubAPICallsCollection.find().fetch();
+    return MandrillStubAPICallsCollection.find().fetch();
   },
   'mandrillStub/insert': function(doc) {
     check(doc, Object);
 
-    _mandrillStubAPICallsCollection.insert(doc);
+    MandrillStubAPICallsCollection.insert(doc);
   },
 });

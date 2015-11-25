@@ -1,6 +1,6 @@
 Package.describe({
   name: 'dropz:mandrill-stub',
-  version: '1.1.1',
+  version: '1.1.2',
   // Brief, one-line summary of the package.
   summary: 'A stub for Mandrill API calls, used in testing meteor apps.',
   // URL to the Git repository containing the source code for this package.
@@ -18,4 +18,6 @@ Package.onUse(function(api) {
   api.use('wylio:mandrill@1.0.0');
 
   api.addFiles('server/mandrill-stub.js', 'server');
+
+  api.export('MandrillStubAPICallsCollection', 'server');
 });
